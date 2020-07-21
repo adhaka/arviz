@@ -10,7 +10,17 @@ from ....stats import autocorr
 
 
 def plot_autocorr(
-    axes, plotters, max_lag, figsize, rows, cols, combined, backend_config, backend_kwargs, show,
+    axes,
+    plotters,
+    max_lag,
+    figsize,
+    rows,
+    cols,
+    combined,
+    textsize,
+    backend_config,
+    backend_kwargs,
+    show,
 ):
     """Bokeh autocorrelation plot."""
     if backend_config is None:
@@ -32,7 +42,7 @@ def plot_autocorr(
         **backend_kwargs,
     }
 
-    figsize, _, _, _, line_width, _ = _scale_fig_size(figsize, None, rows, cols)
+    figsize, _, _, _, line_width, _ = _scale_fig_size(figsize, textsize, rows, cols)
 
     if axes is None:
         _, axes = _create_axes_grid(
