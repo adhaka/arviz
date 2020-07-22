@@ -4,6 +4,7 @@ from itertools import cycle
 
 from bokeh.models.annotations import Title, Legend
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_hex
 import numpy as np
 
 from . import backend_kwarg_defaults
@@ -50,13 +51,13 @@ def plot_density(
 
     if colors == "cycle":
         colors = [
-            prop
+            to_hex(prop)
             for _, prop in zip(
                 range(n_data), cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
             )
         ]
     elif isinstance(colors, str):
-        colors = [colors for _ in range(n_data)]
+        colors = [to_hex(colors) for _ in range(n_data)]
 
     (figsize, _, _, _, line_width, markersize) = _scale_fig_size(figsize, textsize, rows, cols)
 
